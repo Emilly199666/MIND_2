@@ -1,4 +1,4 @@
-# MIND · 脑海 (Brain)
+# MIND · 脑海
 
 > A habit-building companion system that records your daily practice and habit check-ins in real time, and lets you export and download your data anytime.
 

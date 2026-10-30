@@ -1,127 +1,126 @@
-# MIND · 脑海
+# MIND · 脑海 (Brain)
 
-> 一个可以实时记录你每日练习与习惯打卡、并随时导出下载数据的养成性陪伴系统。
+> A habit-building companion system that records your daily practice and habit check-ins in real time, and lets you export and download your data anytime.
 
-**脑海（MIND）** 是一个面向个人学习与自律管理的单页 Web 系统。它把**每日练习、技能养成、习惯打卡、就业与选课规划**集中到一个整洁的界面里，陪伴你一点点积累与成长。
+**MIND (脑海)** is a single-page web system for personal learning and self-discipline management. It brings **daily practice, skill building, habit check-ins, career planning, and course selection** together in a clean, tidy interface—accompanying you as you accumulate progress and grow step by step.
 
-数据采用**本地优先**策略：每一次记录都会实时保存到本地（磁盘文件 + 浏览器缓存），你可以随时把数据导出下载到自己的设备；当前版本**暂不实现不同设备之间的自动同步与共享**，所有数据都先稳稳地保存在你本机。
-
----
-
-## 功能导航
-
-应用左侧的导航栏包含以下模块：
-
-| 导航项     | 说明                           |
-| ------- | ---------------------------- |
-| 基本学习记录  | 记录每天学习的科目与投入时长（支持小数时长打卡）     |
-| 技能养成记录  | 记录各项技能的练习进度与掌握程度             |
-| 习惯养成    | 习惯打卡与连续追踪，帮助你坚持长期习惯          |
-| 人脉      | 管理你的人脉联系与备注                  |
-| 项目      | 记录参与的项目与进展                   |
-| 就业 + 选课 | 下拉包含「就业」与「选课」两个子模块，规划职业方向与课程 |
-| 想法      | 随手记录灵感与想法                    |
-| 复盘      | 对阶段学习 / 成长进行回顾与总结            |
-| 设置      | 主题、字体、提醒、声音、数据备份与恢复等         |
+Data follows a **local-first** strategy: every entry is saved locally in real time (disk file + browser cache), and you can export and download your data to your own device at any time. The current version **does not yet support automatic synchronization or sharing across different devices**—all data stays safely on your local machine first.
 
 ---
 
-## 核心功能
+## Feature Navigation
 
-### 每日学习任务与学习记录
+The navigation bar on the left side of the app contains the following modules:
 
-在「基本学习记录」中，你可以按天记录每个科目的学习时长，支持**小数时长打卡**（如 `1.5` 小时），并可对当天内容做项目内打卡与详情记录。系统会按日期汇总你的投入，形成可视化的学习轨迹，让你清楚知道时间花在了哪里。
-
-### 技能养成记录
-
-「技能养成记录」用于追踪各项技能的练习进度，把零散的练习沉淀为可回顾的能力地图，看到自己在一门技能上的成长曲线。
-
-### 习惯养成
-
-「习惯养成」模块帮助你建立并坚持长期习惯，通过每日打卡与连续天数追踪，让好习惯看得见、能坚持。
-
-### 定时提醒
-
-应用内置提醒能力：你可以设置本地提醒，到达时间后通过**系统通知**像短信一样弹到桌面 / 手机（需授权）；即使未授权，打开本页也会收到应用内提醒与声音提示，避免遗漏当天的学习和打卡。
-
-### 就业与选课
-
-「就业 + 选课」下拉菜单包含两个子模块：
-
-- **就业**：规划职业方向、记录目标岗位与求职进度；
-- **选课**：管理课程清单与学习安排，把课程进度和主线的学习记录联动起来。
+| Nav Item            | Description                                                        |
+| ------------------- | ------------------------------------------------------------------ |
+| Basic Study Log     | Record the subjects you study each day and the time spent (decimals supported) |
+| Skill Building Log  | Track your practice progress and proficiency for each skill        |
+| Habit Building      | Habit check-ins and streak tracking to help you keep long-term habits |
+| Network             | Manage your personal contacts and notes                            |
+| Projects            | Record the projects you take part in and their progress            |
+| Career + Courses    | Dropdown with two sub-modules—"Career" and "Courses"—for planning your direction and curriculum |
+| Ideas               | Jot down inspirations and thoughts on the fly                      |
+| Review              | Reflect on and summarize your learning / growth over a period      |
+| Settings            | Theme, font, reminders, sound, data backup & recovery, and more    |
 
 ---
 
-## 技术栈
+## Core Features
 
-- **前端**：原生 HTML / CSS / JavaScript（单页应用，无构建步骤、无前端框架依赖）
-- **数据持久化**：浏览器 `localStorage`（即时缓存）+ 零依赖 Node.js 本地服务（磁盘权威副本）
-- **云端同步（可选）**：LeanCloud（仅在「设置 → 数据同步」中手动启用后才会使用，默认关闭，不使用也不影响本地功能）
-- **运行环境**：任意现代浏览器 + Node.js（仅在使用本地服务器持久化时需要，推荐）
+### Daily Study Tasks & Study Log
 
-## 如何本地运行
+In **Basic Study Log**, you can record the time spent on each subject per day, supporting **decimal-duration check-ins** (e.g. `1.5` hours), and add in-day check-ins and detail notes. The system aggregates your effort by date into a visual learning trajectory, so you always know where your time went.
 
-> 推荐使用本地服务器方式打开，数据会**永久保存到本地磁盘**，并可随时备份 / 回滚。
+### Skill Building Log
 
-1. 安装 [Node.js](https://nodejs.org/)（v14 及以上）。
-2. 在项目根目录执行启动脚本：
-   - Windows：双击 `start.bat`
-   - macOS / Linux：在终端执行 `bash start.sh`（或 `chmod +x start.sh && ./start.sh`）
-3. 浏览器打开 `http://127.0.0.1:8000` 即可使用。
+**Skill Building Log** tracks your practice progress across skills, turning scattered practice into a reviewable capability map—so you can see your growth curve on any given skill.
 
-也可以手动启动：
+### Habit Building
+
+The **Habit Building** module helps you build and sustain long-term habits. Daily check-ins and streak-day tracking make good habits visible and stickable.
+
+### Scheduled Reminders
+
+The app has built-in reminder capability: you can set local reminders that pop up on your desktop / phone like a text message via **system notifications** when the time arrives (requires permission). Even without permission, opening the page triggers in-app reminders and sound cues, so you never miss a day of learning or check-ins.
+
+### Career & Courses
+
+The **Career + Courses** dropdown contains two sub-modules:
+
+- **Career**: plan your career direction, record target positions and job-search progress.
+- **Courses**: manage your course list and study schedule, linking course progress to your main study log.
+
+---
+
+## Tech Stack
+
+- **Frontend**: vanilla HTML / CSS / JavaScript (single-page app, no build step, no frontend framework dependencies)
+- **Persistence**: browser `localStorage` (instant cache) + zero-dependency Node.js local server (disk authoritative copy)
+- **Cloud sync (optional)**: LeanCloud (only used after you manually enable it in *Settings → Data Sync*; off by default, and local features work fine without it)
+- **Runtime**: any modern browser + Node.js (needed only for the local-server persistence mode, recommended)
+
+## How to Run Locally
+
+> It is recommended to open the app via the local server: data is then **permanently saved to your local disk** and can be backed up / rolled back at any time.
+
+1. Install [Node.js](https://nodejs.org/) (v14 or above).
+2. Run the startup script in the project root:
+   - Windows: double-click `start.bat`
+   - macOS / Linux: run `bash start.sh` in the terminal (or `chmod +x start.sh && ./start.sh`)
+3. Open `http://127.0.0.1:8000` in your browser to start using it.
+
+You can also start it manually:
 
 ```bash
 node server.js
 ```
 
-> 不依赖 Node 的轻量用法：直接用浏览器打开 `index.html`（`file://` 方式）也能用，但数据只存在当前浏览器的 `localStorage`，换端口 / 清缓存会丢失，且无法落盘备份。建议用上面的本地服务器方式。
+> Lightweight usage without Node: opening `index.html` directly (`file://` mode) also works, but data only lives in the current browser's `localStorage`—switching ports / clearing cache will lose it, and no disk backup is possible. The local-server approach above is recommended.
 
-## 数据持久化与备份
+## Data Persistence & Backup
 
-数据采用**本地优先**策略，避免"刷新即丢、换端口即丢"的问题：
+Data follows a **local-first** strategy to avoid the "lost on refresh, lost on port switch" problem:
 
-- **即时缓存**：每次保存先写入浏览器 `localStorage`，保证首屏秒开。
-- **磁盘权威副本**：通过 `server.js` 把数据落盘到 `data/mind_data.json`（权威、耐久）。
-- **自动滚动备份**：每次写入会保留历史版本到 `data/backups/`（最多 20 份），可随时回滚。
-- **兜底提示**：若未连接本地服务器（如用 `file://` 打开）导致只能存浏览器，界面会弹出温和提示；若连浏览器也写不进去，则弹出红色紧急横幅，绝不再静默丢数据。
+- **Instant cache**: every save first writes to browser `localStorage`, guaranteeing a fast first paint.
+- **Disk authoritative copy**: `server.js` persists data to `data/mind_data.json` (authoritative, durable).
+- **Automatic rolling backups**: every write keeps a historical version in `data/backups/` (up to 20 copies), and you can roll back anytime.
+- **Fallback alerts**: if the local server is not connected (e.g. opened via `file://` so only the browser can store data), the UI shows a gentle prompt; if even the browser write fails, a red emergency banner appears—data is never silently lost again.
 
-在「设置 → 数据备份与恢复」面板中，你可以：
+In the *Settings → Data Backup & Recovery* panel you can:
 
-- 查看当前保存状态与最近保存时间；
-- 一键下载数据备份（导出 JSON 到本地）；
-- 从备份文件恢复；
-- 把当前浏览器里的数据迁移到本地磁盘文件（跨端口 / 跨方式救回历史数据）。
+- View the current save status and last-saved time;
+- Download a data backup with one click (export JSON to local);
+- Restore from a backup file;
+- Migrate the data currently in your browser to a local disk file (to recover historical data across ports / modes).
 
-> 说明：你的个人学习数据保存在本机，**不会自动上传到任何云端或第三方**；LeanCloud 云端同步需你主动配置并启用才生效。
+> Note: your personal learning data is stored on your local machine and is **never automatically uploaded to any cloud or third party**; LeanCloud cloud sync only takes effect after you actively configure and enable it.
 
-## 目录结构
+## Directory Structure
 
 ```
 .
-├── index.html            # 应用入口
+├── index.html            # App entry point
 ├── css/
-│   └── styles.css        # 全部样式（含主题变量与日间 / 夜间模式）
+│   └── styles.css        # All styles (theme variables + day / night modes)
 ├── js/
-│   ├── store.js          # 数据层：localStorage + 本地服务器双写持久化
-│   ├── ui.js             # 通用 UI 组件（卡片、弹窗等）
-│   ├── mindmap.js        # 思维导图相关视图
-│   └── app.js            # 主应用：导航、各模块视图、交互逻辑
+│   ├── store.js          # Data layer: localStorage + local-server dual-write persistence
+│   ├── ui.js             # Common UI components (cards, modals, etc.)
+│   ├── mindmap.js        # Mind-map related views
+│   └── app.js            # Main app: navigation, module views, interaction logic
 ├── assets/
-│   └── logo.png          # 应用图标
-├── server.js             # 零依赖本地持久化服务（落盘 + 备份）
-├── start.bat / start.sh  # 一键启动脚本
-├── smoke_test.js         # 启动冒烟测试（node smoke_test.js）
-└── README.md             # 本文件
+│   └── logo.png          # App icon
+├── server.js             # Zero-dependency local persistence service (disk + backups)
+├── start.bat / start.sh  # One-click startup scripts
+├── smoke_test.js         # Startup smoke test (node smoke_test.js)
+└── README.md             # This file
 ```
 
-> `data/` 与 `.workbuddy/` 为本地运行 / 工具产生的目录，已加入 `.gitignore`，不会进入版本库。
+> `data/` and `.workbuddy/` are directories produced at runtime / by tooling; they are already in `.gitignore` and will not enter the version control repo.
 
-## 测试
+## Testing
 
 ```bash
-node --check js/*.js   # 语法检查
-node smoke_test.js     # 启动与「复盘」视图渲染冒烟测试
+node --check js/*.js   # Syntax check
+node smoke_test.js     # Startup + "Review" view render smoke test
 ```
-
